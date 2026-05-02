@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Business Consulting Case Study | Japanese Tea Shop, Surry Hills | Isao Matsumoto Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap');
+
+  :root {
+    --matcha: #4a7c59;
+    --matcha-light: #7aab89;
+    --matcha-pale: #e8f0eb;
+    --gold: #c9a84c;
+    --gold-dark: #8b6914;
+    --gold-light: #f0d98c;
+    --ink: #1a1a2e;
+    --ink-mid: #2d2d4e;
+    --warm-white: #faf8f4;
+    --warm-gray: #f0ede6;
+    --text: #2c2c2c;
+    --text-light: #666;
+    --compare-before-bg: #f5e6e6;
+    --compare-before-border: #e0b0b0;
+    --compare-before-text: #c0392b;
+    --plan-c-dark: #1a1207;
+    --plan-c-darker: #2d1f0a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  /* SLIDE 1: COVER */
+  .slide-cover {
+    background: var(--ink);
+    color: white;
+    align-items: center;
+    text-align: center;
+  }
+  .slide-cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(74,124,89,0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.15) 0%, transparent 60%);
+  }
+  .cover-kamon { font-size: 80px; margin-bottom: 20px; position: relative; z-index: 1; }
+  .cover-jp-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px; color: var(--gold);
+    letter-spacing: 6px; margin-bottom: 16px; position: relative; z-index: 1;
+  }
+  .cover-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 700; line-height: 1.2;
+    margin-bottom: 12px; position: relative; z-index: 1;
+  }
+  .cover-subtitle {
+    font-size: 18px; color: var(--matcha-light);
+    margin-bottom: 40px; position: relative; z-index: 1; font-style: italic;
+  }
+  .cover-divider {
+    width: 80px; height: 2px; background: var(--gold);
+    margin: 0 auto 40px; position: relative; z-index: 1;
+  }
+  .cover-meta {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+    letter-spacing: 2px; position: relative; z-index: 1; line-height: 2;
+  }
+  .cover-meta span { color: var(--gold-light); font-weight: 600; }
+
+  /* SECTION HEADERS */
+  .section-num {
+    font-size: 11px; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--matcha); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 700; color: var(--ink);
+    line-height: 1.2; margin-bottom: 10px;
+  }
+  .section-title span { color: var(--matcha); }
+  .section-subtitle { font-size: 15px; color: var(--text-light); margin-bottom: 40px; }
+
+  /* SLIDE 3: MARKET */
+  .market-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-bottom: 32px;
+  }
+  .market-card {
+    background: var(--ink); border-radius: 16px;
+    padding: 28px 22px; color: white; position: relative; overflow: hidden;
+  }
+  .market-card.accent { background: linear-gradient(135deg, var(--matcha) 0%, var(--matcha-light) 100%); }
+  .market-card.gold { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%); }
+  .market-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 8px;
+  }
+  .market-card.accent .market-num, .market-card.gold .market-num { color: white; }
+  .market-label { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+  .insight-box {
+    background: var(--matcha-pale); border-left: 4px solid var(--matcha);
+    border-radius: 0 12px 12px 0; padding: 20px 28px;
+  }
+  .insight-box p { font-size: 14px; color: var(--ink-mid); font-weight: 500; line-height: 1.8; }
+  .insight-box p strong { color: var(--matcha); }
+
+  /* SHARED: Dark slide base */
+  .slide-dark { background: var(--ink); color: white; }
+
+  /* SLIDE 4: PROBLEM */
+  .slide-problem { background: var(--ink); color: white; }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 8px;
+  }
+  .problem-card {
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
+    padding: 26px; background: rgba(255,255,255,0.04);
+  }
+  .problem-icon { font-size: 32px; margin-bottom: 14px; }
+  .problem-title { font-size: 17px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
+  .problem-desc { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .problem-tagline {
+    text-align: center; margin-top: 32px; padding: 20px;
+    background: rgba(201,168,76,0.1); border-radius: 12px;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .problem-tagline p {
+    font-family: 'Playfair Display', serif; font-size: 20px;
+    color: var(--gold-light); font-style: italic;
+  }
+
+  /* SLIDE 5: COMPARE */
+  .slide-compare { background: var(--warm-gray); }
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr 50px 1fr;
+    gap: 0; align-items: stretch; margin-top: 8px;
+  }
+  .compare-col { border-radius: 20px; padding: 30px 28px; }
+  .compare-col.before { background: var(--compare-before-bg); border: 2px solid var(--compare-before-border); }
+  .compare-col.after { background: var(--matcha-pale); border: 2px solid var(--matcha-light); }
+  .compare-arrow { display: flex; align-items: center; justify-content: center; font-size: 26px; }
+  .compare-head { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+  .compare-col.before .compare-head { color: var(--compare-before-text); }
+  .compare-col.after .compare-head { color: var(--matcha); }
+  .compare-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 13px; line-height: 1.5; }
+  .compare-item .icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .compare-summary {
+    margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .summary-stat {
+    background: var(--ink); color: white; border-radius: 12px;
+    padding: 18px; text-align: center;
+  }
+  .summary-stat .num {
+    font-family: 'Playfair Display', serif; font-size: 28px;
+    color: var(--gold-light); font-weight: 700;
+  }
+  .summary-stat .label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  /* SLIDE 6: PACKAGES */
+  .slide-packages { background: var(--warm-white); padding: 50px 55px; }
+  .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 8px; }
+  .pkg-card {
+    border-radius: 20px; padding: 28px 24px; position: relative;
+    border: 2px solid transparent;
+  }
+  .pkg-card.plan-a { background: white; border-color: #ddd; }
+  .pkg-card.plan-b { background: var(--ink); border-color: var(--matcha); color: white; }
+  .pkg-card.plan-c { background: linear-gradient(145deg, var(--plan-c-dark) 0%, var(--plan-c-darker) 100%); border-color: var(--gold); color: white; }
+  .pkg-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px; margin-bottom: 12px;
+  }
+  .plan-a .pkg-badge { background: var(--matcha-pale); color: var(--matcha); }
+  .plan-b .pkg-badge { background: var(--matcha); color: white; }
+  .plan-c .pkg-badge { background: var(--gold); color: var(--ink); }
+  .pkg-recommend {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--matcha); color: white; font-size: 10px; font-weight: 700;
+    padding: 3px 14px; border-radius: 20px; white-space: nowrap;
+  }
+  .pkg-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .plan-a .pkg-name { color: var(--ink); }
+  .pkg-tagline { font-size: 11px; margin-bottom: 18px; font-style: italic; }
+  .plan-a .pkg-tagline { color: var(--text-light); }
+  .plan-b .pkg-tagline, .plan-c .pkg-tagline { color: rgba(255,255,255,0.6); }
+  .pkg-price-row { margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .plan-a .pkg-price-row { border-color: #eee; }
+  .pkg-original { font-size: 11px; text-decoration: line-through; opacity: 0.5; margin-bottom: 2px; display: inline; }
+  .discount-badge { font-size: 11px; font-weight: 700; color: var(--gold-light); margin-left: 6px; opacity: 1; }
+  .pkg-price { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1; }
+  .plan-a .pkg-price { color: var(--ink); }
+  .plan-b .pkg-price { color: var(--matcha-light); }
+  .plan-c .pkg-price { color: var(--gold-light); }
+  .pkg-price-note { font-size: 10px; opacity: 0.6; margin-top: 4px; }
+  .pkg-features { list-style: none; }
+  .pkg-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin-bottom: 9px; line-height: 1.4; }
+  .plan-a .pkg-features li { color: var(--text); }
+  .plan-b .pkg-features li, .plan-c .pkg-features li { color: rgba(255,255,255,0.85); }
+  .pkg-features li .check { flex-shrink: 0; }
+
+  /* SLIDE 7: CTA */
+  .slide-cta { background: var(--ink); color: white; }
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+  .profile-name { font-family: 'Noto Serif JP', serif; font-size: 28px; color: var(--gold-light); margin-bottom: 4px; }
+  .profile-en { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+  .profile-stat { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
+  .profile-stat .num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--matcha-light); line-height: 1; min-width: 70px; }
+  .profile-stat .detail .title { font-size: 13px; font-weight: 600; color: white; }
+  .profile-stat .detail .sub { font-size: 11px; color: rgba(255,255,255,0.45); }
+  .profile-quote {
+    margin-top: 24px; padding: 18px 22px;
+    border-left: 3px solid var(--gold); background: rgba(255,255,255,0.05);
+    border-radius: 0 8px 8px 0; font-size: 13px; color: rgba(255,255,255,0.7);
+    font-style: italic; line-height: 1.7;
+  }
+  .cta-right {
+    background: linear-gradient(145deg, rgba(74,124,89,0.2) 0%, rgba(201,168,76,0.1) 100%);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; text-align: center;
+  }
+  .cta-step { display: flex; align-items: center; gap: 14px; text-align: left; margin-bottom: 20px; }
+  .cta-step-num {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--matcha); color: white;
+    font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .cta-step-text .title { font-size: 13px; font-weight: 600; color: white; }
+  .cta-step-text .sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+  .cta-email {
+    margin-top: 24px; padding: 14px 20px; background: var(--matcha);
+    border-radius: 12px; font-size: 14px; font-weight: 700; color: white;
+  }
+  .cta-note { margin-top: 12px; font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.8; }
+
+  .slide-num { position: absolute; bottom: 28px; right: 55px; font-size: 11px; opacity: 0.25; letter-spacing: 2px; }
+
+  /* NAV */
+  .nav {
+    position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 8px; z-index: 100;
+  }
+  .nav a {
+    width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,0.2);
+    text-decoration: none; transition: background-color 0.2s, transform 0.2s; display: block;
+  }
+  .nav a:hover { background: var(--matcha); transform: scale(1.5); }
+
+  /* SLIDE: MOOD BOARD */
+  .slide-moodboard {
+    background: var(--ink);
+    color: white;
+    padding: 50px 60px;
+  }
+
+  .mood-concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    margin-top: 8px;
+  }
+
+  .mood-concept {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mood-concept-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    z-index: 2;
+  }
+
+  .mood-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    height: 260px;
+  }
+
+  .mood-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mood-concept-footer {
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .mood-concept-footer h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .concept-a-footer { border-top: 3px solid var(--gold); }
+  .concept-b-footer { border-top: 3px solid var(--matcha); }
+
+  .mood-concept-footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  .mood-tags {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .mood-tag {
+    font-size: 10px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .tag-a { background: rgba(201,168,76,0.2); color: var(--gold-light); }
+  .tag-b { background: rgba(74,124,89,0.2); color: var(--matcha-light); }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: white; }
+    .nav { display: none !important; }
+    .slide {
+      min-height: 100vh;
+      height: 100vh;
+      page-break-after: always;
+      page-break-inside: avoid;
+      padding: 40px 60px;
+      overflow: hidden;
+    }
+    .slide-cover, .slide-problem, .slide-moodboard, .slide-cta {
+      -webkit-print-color-adjust: exact !important;
+    }
+    /* slide-problem: 4カードを1ページに収める */
+    .slide-problem { padding: 30px 60px !important; }
+    .slide-problem .section-title { font-size: 22px !important; margin-bottom: 12px !important; }
+    .problem-grid { gap: 10px !important; }
+    .problem-card { padding: 12px 14px !important; }
+    .problem-card .problem-icon { font-size: 20px !important; margin-bottom: 4px !important; }
+    .problem-card .problem-title { font-size: 12px !important; margin-bottom: 4px !important; }
+    .problem-card .problem-desc { font-size: 10px !important; line-height: 1.5 !important; }
+    .problem-tagline { margin-top: 10px !important; padding: 10px 20px !important; }
+    .problem-tagline p { font-size: 11px !important; }
+    /* slide-cta: 1ページに収める */
+    .slide-cta {
+      height: 100vh !important;
+      min-height: unset !important;
+      overflow: hidden !important;
+      page-break-after: always !important;
+      padding: 30px 60px !important;
+    }
+    .slide-cta .section-title { font-size: 22px !important; margin-bottom: 16px !important; }
+    .slide-cta .profile-grid { gap: 24px !important; }
+    .slide-cta .profile-name { font-size: 22px !important; }
+    .slide-cta .profile-stat { margin-bottom: 10px !important; }
+    .slide-cta .profile-stat .num { font-size: 24px !important; }
+    .slide-cta .profile-quote { font-size: 10px !important; padding: 10px 14px !important; margin-top: 10px !important; }
+    .slide-cta .cta-right { padding: 20px !important; }
+    .slide-cta .cta-step { margin-bottom: 8px !important; }
+    .slide-cta .cta-step-text .title { font-size: 11px !important; }
+    .slide-cta .cta-step-text .sub { font-size: 9px !important; line-height: 1.4 !important; }
+    .slide-cta .cta-email { font-size: 13px !important; margin: 10px 0 !important; }
+    .slide-cta .cta-note { font-size: 9px !important; margin-top: 8px !important; }
+    /* その他 */
+    .mood-images { height: 260px; }
+    .packages-grid { gap: 12px; }
+    .pkg-card { padding: 20px 16px; }
+    .pkg-features li { font-size: 11px; margin-bottom: 6px; }
+    .compare-grid { grid-template-columns: 1fr 40px 1fr; }
+    .compare-col { padding: 20px; }
+    .market-grid { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(74,124,89,0.95);color:white;text-align:center;padding:8px 16px;font-size:12px;font-weight:600;letter-spacing:1px;backdrop-filter:blur(8px);">
+  📁 PORTFOLIO CASE STUDY — Japanese Tea Shop Opening, Surry Hills, Sydney（クライアント情報は匿名化済み）｜ <a href="https://linkedin.com/in/isao-matsumoto-1b271411b" style="color:#a8d8b8;text-decoration:none;">Isao Matsumoto — AI Business Consultant</a>
+</div>
+
+<nav class="nav" style="top:calc(50% + 20px)">
+  <a href="#s1"></a><a href="#s2"></a><a href="#s2b"></a><a href="#s3"></a>
+  <a href="#s4"></a><a href="#s5"></a><a href="#s6"></a><a href="#s7"></a>
+</nav>
+
+<!-- ===== SLIDE 1: COVER ===== -->
+<section class="slide slide-cover" id="s1">
+  <div class="cover-kamon">🍵</div>
+  <div class="cover-jp-title">A I ビ ジ ネ ス コ ン サ ル テ ィ ン グ 提 案 書</div>
+  <h1 class="cover-main-title">老舗茶屋200年の伝統を、<br>2026年のシドニーへ届ける。</h1>
+  <p class="cover-subtitle">内装業者との打合せが始まった今が、Mood Boardを届ける最後のチャンス。</p>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">
+    Prepared for <span>Japanese Tea Shop ｜ Surry Hills, Sydney（匿名化済みポートフォリオ事例）</span><br>
+    By <span>松本 勲 ｜ AI Business Consultant</span> &nbsp;｜&nbsp; April 2026
+  </div>
+  <div class="slide-num">01 / 08</div>
+</section>
+
+<!-- ===== SLIDE 2: MOOD BOARD ===== -->
+<section class="slide slide-moodboard" id="s2">
+  <div class="section-num" style="color:var(--matcha-light)">Interior Concept｜内装コンセプト 3案</div>
+  <h2 class="section-title" style="color:white;margin-bottom:6px">確定フロアプランをもとに、<span style="color:var(--gold-light)">3つの世界観</span></h2>
+  <p style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:16px;">Garage（北・天井高）→ WS専用 / Tea Prep → デモカウンター / Tasting Area → 試飲・小売 / Recycled Timber Shelf活用 / Devonshire St入口動線 / FRL耐火壁仕上げ</p>
+
+  <div class="mood-concept-grid">
+
+    <!-- CONCEPT A -->
+    <div class="mood-concept">
+      <div class="mood-concept-label" style="background:rgba(74,124,89,0.85);">Concept A</div>
+      <div class="mood-images">
+        <img src="concept-a-1.jpg" alt="Concept A - 1" loading="lazy">
+        <img src="concept-a-2.jpg" alt="Concept A - 2" loading="lazy">
+      </div>
+      <div class="mood-concept-footer concept-a-footer" style="border-top:3px solid var(--gold)">
+        <h3 style="color:var(--gold-light);font-size:15px;">青碧の間｜Blue & Timber Modern</h3>
+        <p style="font-size:11px;">藍染めブルーのアクセントウォール×Recycled Timber。Devonshire St入口から外に見える視認性◎。Garageゾーン（天井高）をWSエリア化、Tea PrepをU字デモカウンターに。可動テーブルで4〜8名対応。</p>
+        <div class="mood-tags" style="margin-top:6px;">
+          <span class="mood-tag tag-a">藍染めブルー×Timber</span>
+          <span class="mood-tag tag-a">Garage→WS専用</span>
+          <span class="mood-tag tag-a">外から見える設計</span>
+          <span class="mood-tag tag-a">SNS映え◎</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT B -->
+    <div class="mood-concept">
+      <div class="mood-concept-label" style="background:rgba(45,45,45,0.9);">Concept B</div>
+      <div class="mood-images">
+        <img src="concept-b-1.jpg" alt="Concept B - 1" loading="lazy">
+        <img src="concept-b-2.jpg" alt="Concept B - 2" loading="lazy">
+      </div>
+      <div class="mood-concept-footer concept-b-footer" style="border-top:3px solid var(--matcha)">
+        <h3 style="color:var(--matcha-light);font-size:15px;">静寂の石と木｜Wabi-Sabi</h3>
+        <p style="font-size:11px;">FRL耐火壁を珪藻土で包み東京本店の空気感を再現。古材デモカウンター×自然石。吸音壁でWSの静寂を確保。Timber Shelfを茶道具「蔵」に。低テーブル×和椅子でU字8名。高単価WS設定の説得力◎。</p>
+        <div class="mood-tags" style="margin-top:6px;">
+          <span class="mood-tag tag-b">珪藻土吸音壁</span>
+          <span class="mood-tag tag-b">古材×自然石</span>
+          <span class="mood-tag tag-b">本店の空気感</span>
+          <span class="mood-tag tag-b">高単価WS対応</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONCEPT C -->
+    <div class="mood-concept">
+      <div class="mood-concept-label" style="background:rgba(150,100,50,0.85);">Concept C ⭐推奨</div>
+      <div class="mood-images">
+        <img src="concept-c-1.jpg" alt="Concept C - 1" loading="lazy">
+        <img src="concept-c-2.jpg" alt="Concept C - 2" loading="lazy">
+      </div>
+      <div class="mood-concept-footer" style="border-top:3px solid var(--gold);background:rgba(255,255,255,0.06);padding:16px 20px;">
+        <h3 style="color:var(--gold-light);font-size:15px;">青侘び｜Blue Wabi-Sabi Hybrid</h3>
+        <p style="font-size:11px;color:rgba(255,255,255,0.75);">入口側はStone Blueで視認性を確保、WS側は珪藻土ベージュで静寂感。スライドパーティションで可変設計。丸テーブル展開式で4〜8名に即対応。<strong style="color:var(--gold-light)">松本さんの施工監理・品質管理の目が最も活きる案。</strong></p>
+        <div class="mood-tags" style="margin-top:6px;">
+          <span class="mood-tag" style="background:rgba(201,168,76,0.2);color:var(--gold-light);">収益モデル最大汎用</span>
+          <span class="mood-tag" style="background:rgba(201,168,76,0.2);color:var(--gold-light);">施工監理対応</span>
+          <span class="mood-tag" style="background:rgba(201,168,76,0.2);color:var(--gold-light);">可変レイアウト</span>
+          <span class="mood-tag" style="background:rgba(201,168,76,0.2);color:var(--gold-light);">両コンセプト融合</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="slide-num">02 / 08</div>
+</section>
+
+<!-- ===== SLIDE 2B: FLOOR PLAN ===== -->
+<section class="slide" id="s2b" style="background:var(--warm-gray);">
+  <div class="section-num">Confirmed Floor Plan｜確定フロアプラン</div>
+  <h2 class="section-title">Surry Hills 物件 — <span>ゾーニング設計</span></h2>
+  <p class="section-subtitle">Proposed Ground Floor Plan（Scale 1:50）をもとにワークショップ動線を設計</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+
+    <!-- Floor Plan Image -->
+    <div>
+      <img src="tempFileForShare_20260413-102119.jpg" alt="Proposed Ground Floor Plan" style="width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+      <p style="font-size:11px;color:var(--text-light);margin-top:8px;text-align:center;">Proposed Ground Floor Plan | Scale 1:50 | 確定済み</p>
+    </div>
+
+    <!-- Zone Analysis -->
+    <div>
+      <div style="margin-bottom:18px;">
+        <div style="font-size:12px;font-weight:700;color:var(--matcha);letter-spacing:1px;margin-bottom:10px;">ゾーン分析 × ワークショップ設計</div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="background:white;border-left:4px solid var(--matcha);border-radius:0 8px 8px 0;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);">🏗️ Garageゾーン（北側・天井高）</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:2px;">露出ダクト→ブラック塗装でインダストリアル演出。<strong>ワークショップ専用エリア</strong>（4〜8名）</div>
+          </div>
+          <div style="background:white;border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);">🍵 Tea Preparation Area</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:2px;">通常→試飲・販売カウンター / WS時→<strong>デモステーション（先生の作業台）</strong></div>
+          </div>
+          <div style="background:white;border-left:4px solid #7aabcc;border-radius:0 8px 8px 0;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);">🪵 Recycled Timber Shelf（北・南）</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:2px;">「Possible to Split」構造を活用。北棚→WS道具棚 / 南棚→茶葉販売ディスプレイ</div>
+          </div>
+          <div style="background:white;border-left:4px solid #cc9966;border-radius:0 8px 8px 0;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);">🚶 Tasting Area（中央）</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:2px;">Devonshire St入口から自然に誘導。<strong>試飲体験→WS申込み</strong>のコンバージョン動線</div>
+          </div>
+          <div style="background:white;border-left:4px solid #999;border-radius:0 8px 8px 0;padding:10px 14px;">
+            <div style="font-size:12px;font-weight:700;color:var(--ink);">🚫 NO WORKS（右側・階段下）</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:2px;">NSW Heritage Act規制エリア。変更不可。収納または装飾のみ。</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--ink);border-radius:10px;padding:14px 18px;">
+        <div style="font-size:11px;font-weight:700;color:var(--gold-light);margin-bottom:6px;">⚡ 今週の業者打合せに持ち込めるポイント</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.7;">
+          FRL耐火壁（FRL 180/180/180）の仕上げ方向性・Recycled Timber棚の残置確認・Garage天井ダクトの塗装可否・Devonshire St入口ガラス面積の最大化交渉
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">03 / 08</div>
+</section>
+
+<!-- ===== SLIDE 3: MARKET ===== -->
+<section class="slide" id="s3">
+  <div class="section-num">Market Intelligence</div>
+  <h2 class="section-title">今が、<span>参入の最適解</span>です。</h2>
+  <p class="section-subtitle">シドニーの日本茶市場は急成長中。データが「今すぐ動くべき理由」を示しています。</p>
+
+  <div class="market-grid">
+    <div class="market-card">
+      <div class="market-num">AUD 690M</div>
+      <div class="market-label">オーストラリア茶市場規模（2025年）<br>CAGR 5.1%で成長、2035年に$1.13Bへ</div>
+    </div>
+    <div class="market-card accent">
+      <div class="market-num">+7.1%</div>
+      <div class="market-label">抹茶市場の年間成長率<br>2030年にAUD $81Mへ拡大予測</div>
+    </div>
+    <div class="market-card gold">
+      <div class="market-num">2×</div>
+      <div class="market-label">「抹茶」Google検索量（2019年比）<br>2025年に2倍以上に急増</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <p>
+      🎯 <strong>シドニーに日本茶専門店はまだ存在しない。</strong>Oh!Matcha（George St）やMATCHA-YA（Darling Square）はドリンク主体の「抹茶カフェ」。
+      試飲・ワークショップ・日本茶小売を軸とした<strong>「日本茶文化の総合ショールーム」は空白地帯</strong>であり、このクライアントがシドニー史上初の存在になる。<br><br>
+      🚃 <strong>立地は路面電車Surry Hills駅の目の前。</strong>東京でいう「代官山・中目黒・下北沢」相当のクリエイティブエリアに、デザイン事務所・広告代理店が集積。日本茶文化に感度の高い層が毎日通勤で目の前を通過する絶好の立地。
+      2026年7月のグランドオープンで、Surry Hillsを「日本茶文化の発信拠点」にする——その仕組みをAI×現場経験で一緒に構築します。
+    </p>
+  </div>
+  <div class="slide-num">04 / 08</div>
+</section>
+
+<!-- ===== SLIDE 4: PROBLEM ===== -->
+<section class="slide slide-problem" id="s4">
+  <div class="section-num" style="color:var(--matcha-light)">Current Challenge</div>
+  <h2 class="section-title" style="color:white">業者打合せが始まった<span style="color:var(--gold-light)">今週</span>が、<br>認識ズレを防ぐ最後のタイミング。</h2>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-icon">⏰</div>
+      <div class="problem-title">7月グランドオープンまでの超短期決戦</div>
+      <div class="problem-desc">4月1日に物件契約締結済み。5〜6月は内装工事、6月下旬プレオープン、7月上旬グランドオープン。この間にスタッフ採用・英語コンテンツ制作・SNS戦略・ワークショップ告知・備品調達がすべて同時進行する。<br><br>
+      <span style="color:var(--gold-light);font-size:11px;font-weight:600">⚡ 開業1ヶ月の遅れ ≒ 賃料+機会損失でAUD $8,000〜以上の損失</span></div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">🏠</div>
+      <div class="problem-title">業者打合せ開始済み × ヘリテージ建築の内装制約</div>
+      <div class="problem-desc">内装業者との打合せがすでに始まっている。Proposed Floor Plan確認済み（Garageゾーン・Tea Prep Area・Recycled Timber Shelf・FRL耐火壁）——飲食設備不可・NSW Heritage Act規制・上階に建築事務所という3つの制約がある。「水彩・青を基調とした街角」＋ワークショップゾーンの両立を、<strong style="color:var(--gold-light)">Mood Board（視覚的指示書）なしに業者に伝えるのは極めて困難。</strong><br><br>
+      <span style="color:var(--gold-light);font-size:11px;font-weight:600">⚡ 今週が唯一のウィンドウ——内装工事費AUD $65,000、認識ズレ1回で$15,000〜$50,000のやり直しリスク</span></div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">🌏</div>
+      <div class="problem-title">飲食不可物件での英語圏集客</div>
+      <div class="problem-desc">物件は飲食店営業不可のため、テイクアウトドリンクは販売できない。試飲・ワークショップ・日本茶小売のみで英語圏のシドニー市民を集客するには、「体験の価値」を英語で伝えるコンテンツ戦略が開業前から必須。<br><br>
+      <span style="color:var(--gold-light);font-size:11px;font-weight:600">⚡ 英語SNS・LP未整備のまま開業 → 初月集客ゼロのリスク</span></div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">📱</div>
+      <div class="problem-title">英語アカウントのコンテンツ量産</div>
+      <div class="problem-desc">@[client_sns]（英語版Instagram・Facebook・Threads）は既存だが、グランドオープンに向けた集中投稿・ワークショップ告知・プレオープン予約受付など、英語コンテンツの量と質が問われる。日英バイリンガルでの発信を少人数で回すには仕組みが必要。<br><br>
+      <span style="color:var(--gold-light);font-size:11px;font-weight:600">⚡ 手動投稿の工数損失：週10〜15時間 ＝ 月AUD $2,400〜3,600相当</span></div>
+    </div>
+  </div>
+
+  <div class="problem-tagline">
+    <p>"準備不足のグランドオープンは、最高のブランドを最悪の第一印象に変える。"</p>
+  </div>
+  <div class="slide-num">05 / 08</div>
+</section>
+
+<!-- ===== SLIDE 5: BEFORE/AFTER ===== -->
+<section class="slide slide-compare" id="s5">
+  <div class="section-num">The Transformation</div>
+  <h2 class="section-title">時間＝お金。<span>その差を数字で見る。</span></h2>
+  <p class="section-subtitle">「頼まない」選択は、本当に安上がりか。</p>
+
+  <!-- 比較テーブル -->
+  <div style="width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:14px;display:table;">
+
+    <!-- ヘッダー行 -->
+    <div style="display:table-row;">
+      <div style="display:table-cell;width:36%;padding:8px 12px;background:rgba(201,168,76,0.25);color:#5a3e00;font-size:10px;font-weight:700;letter-spacing:1px;border-bottom:1px solid rgba(201,168,76,0.4);">課題</div>
+      <div style="display:table-cell;width:32%;padding:8px 12px;background:rgba(192,57,43,0.2);color:#c0392b;font-size:10px;font-weight:700;letter-spacing:1px;border-bottom:1px solid rgba(0,0,0,0.08);">❌ サポートなし</div>
+      <div style="display:table-cell;width:32%;padding:8px 12px;background:rgba(74,124,89,0.25);color:#2d6a42;font-size:10px;font-weight:700;letter-spacing:1px;border-bottom:1px solid rgba(0,0,0,0.08);">✅ Matsumoto × AI</div>
+    </div>
+
+    <!-- 行1 -->
+    <div style="display:table-row;">
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);color:#5a3e00;font-weight:700;">🎨 内装Mood Board</div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(192,57,43,0.07);">
+        <span style="color:#b03020;font-weight:700;">ビジュアルなし</span><br>
+        <span style="color:#7a3030;font-size:10px;">認識ズレ → やり直し <strong style="color:#c0392b;">$15,000〜$50,000</strong></span>
+      </div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(74,124,89,0.08);">
+        <span style="color:#1a6b35;font-weight:700;">72時間で完成・即共有</span><br>
+        <span style="color:#2d5a3a;font-size:10px;">業者指示書として使用可。やり直しゼロ。</span>
+      </div>
+    </div>
+
+    <!-- 行2 -->
+    <div style="display:table-row;">
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);color:#5a3e00;font-weight:700;">🌐 英語SNSコンテンツ</div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(192,57,43,0.07);">
+        <span style="color:#b03020;font-weight:700;">週15時間を手作業</span><br>
+        <span style="color:#7a3030;font-size:10px;">月60時間 ≒ <strong style="color:#c0392b;">$3,000相当の時間コスト</strong></span>
+      </div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(74,124,89,0.08);">
+        <span style="color:#1a6b35;font-weight:700;">30日分をAIで即量産</span><br>
+        <span style="color:#2d5a3a;font-size:10px;">作業時間 → <strong style="color:#1a6b35;">週1時間以下に圧縮</strong></span>
+      </div>
+    </div>
+
+    <!-- 行3 -->
+    <div style="display:table-row;">
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);color:#5a3e00;font-weight:700;">🤖 WS予約・返信対応</div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(192,57,43,0.07);">
+        <span style="color:#b03020;font-weight:700;">全件手動・返信漏れ多発</span><br>
+        <span style="color:#7a3030;font-size:10px;">機会損失 月<strong style="color:#c0392b;">$1,500〜$3,000</strong>相当</span>
+      </div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(74,124,89,0.08);">
+        <span style="color:#1a6b35;font-weight:700;">Make自動化で24時間対応</span><br>
+        <span style="color:#2d5a3a;font-size:10px;">予約→確認メール→カレンダーを<strong style="color:#1a6b35;">完全自動</strong></span>
+      </div>
+    </div>
+
+    <!-- 行4 -->
+    <div style="display:table-row;">
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);color:#5a3e00;font-weight:700;">🏛️ 施工監理・規制確認</div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(192,57,43,0.07);">
+        <span style="color:#b03020;font-weight:700;">別途コンサル費用</span><br>
+        <span style="color:#7a3030;font-size:10px;">ヘリテージ規制確認だけで <strong style="color:#c0392b;">+$3,000〜$5,000</strong></span>
+      </div>
+      <div style="display:table-cell;padding:9px 12px;border-bottom:1px solid rgba(0,0,0,0.07);background:rgba(74,124,89,0.08);">
+        <span style="color:#1a6b35;font-weight:700;">Plan Cに一括込み</span><br>
+        <span style="color:#2d5a3a;font-size:10px;">現地立会い3回・品質管理・消防法確認まで</span>
+      </div>
+    </div>
+
+    <!-- 行5 -->
+    <div style="display:table-row;">
+      <div style="display:table-cell;padding:9px 12px;background:rgba(201,168,76,0.1);color:#5a3e00;font-weight:700;">💸 マーケ代行コスト</div>
+      <div style="display:table-cell;padding:9px 12px;background:rgba(192,57,43,0.07);">
+        <span style="color:#b03020;font-weight:700;">月 $3,000〜$8,000</span><br>
+        <span style="color:#7a3030;font-size:10px;">英語コンテンツ・SNS運用は別途追加</span>
+      </div>
+      <div style="display:table-cell;padding:9px 12px;background:rgba(74,124,89,0.08);">
+        <span style="color:#1a6b35;font-weight:700;">一括 $2,660〜（30〜50% OFF）</span><br>
+        <span style="color:#2d5a3a;font-size:10px;">Mood Board＋SNS＋自動化＋監理まで全込み</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 合計節約額バナー -->
+  <div style="background:linear-gradient(90deg,rgba(201,168,76,0.25) 0%,rgba(74,124,89,0.25) 100%);border:1px solid rgba(201,168,76,0.5);border-radius:12px;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+    <div style="text-align:center;flex:1;">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#8b2500;">$20,000〜</div>
+      <div style="font-size:10px;color:#6b4020;margin-top:2px;font-weight:600;">「頼まない」場合の<br>リスク損失合計（概算）</div>
+    </div>
+    <div style="font-size:20px;color:var(--gold-dark);font-weight:700;">vs</div>
+    <div style="text-align:center;flex:1;">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1a5c30;">$2,660〜</div>
+      <div style="font-size:10px;color:#2d4a20;margin-top:2px;font-weight:600;">Matsumoto × AIの<br>初期投資（Plan A〜）</div>
+    </div>
+    <div style="font-size:20px;color:var(--gold-dark);font-weight:700;">→</div>
+    <div style="text-align:center;flex:1.2;background:rgba(201,168,76,0.2);border-radius:8px;padding:8px 10px;border:1px solid rgba(201,168,76,0.4);">
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#7a5500;">差額 $17,000〜</div>
+      <div style="font-size:10px;color:#5a3d00;margin-top:2px;font-weight:700;">を守るための投資。<br>時間を買うのが最速の節約。</div>
+    </div>
+  </div>
+
+  <div class="slide-num">06 / 08</div>
+</section>
+
+<!-- ===== SLIDE 6: PACKAGES ===== -->
+<section class="slide slide-packages" id="s6">
+  <div class="section-num">Consulting Packages</div>
+  <h2 class="section-title">フェーズに合わせた、<span>3つの選択肢</span></h2>
+  <p class="section-subtitle">「スキルは十分、足りないのは時間とキャパシティ」——そのボトルネックを外すための3プラン。全てポートフォリオ特別価格・着手金50%→納品後50%。</p>
+
+  <div class="packages-grid">
+    <!-- PLAN A -->
+    <div class="pkg-card plan-a">
+      <div class="pkg-badge">Plan A</div>
+      <div class="pkg-name">AI Content Sprint</div>
+      <div class="pkg-tagline">"やるべきことはわかってる。時間だけが足りない。"</div>
+      <div class="pkg-price-row">
+        <div><span class="pkg-original" style="color:#999">通常価格 AUD $3,800</span><span class="discount-badge">▼ 30% OFF</span></div>
+        <div class="pkg-price">$2,660</div>
+        <div class="pkg-price-note" style="color:#666">着手金 $1,330 ＋ 納品後 $1,330</div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="check">🎨</span>内装Mood Board（Concept A/B/C 各2案・フロアプラン基準・業者指示書として即使用可）</li>
+        <li><span class="check">🏗️</span>ゾーニング図（Garage→WS・Tasting Area→試飲・Tea Prep→デモ台の配置案）</li>
+        <li><span class="check">📅</span>英語SNS 30日分カレンダー（@[client_sns]用・グランドオープンまで）</li>
+        <li><span class="check">📣</span>ワークショップ&試飲イベント告知コンテンツ 英語3本制作</li>
+        <li><span class="check">📸</span>照明・什器・素材リスト（Recycled Timber Shelf活用案・FRL壁仕上げ案・予算目安付き）</li>
+        <li><span class="check">🏠</span>NSW Heritage Act＋FRL規制適合チェックポイント（認識ズレ防止用）</li>
+      </ul>
+    </div>
+
+    <!-- PLAN B -->
+    <div class="pkg-card plan-b">
+      <div class="pkg-recommend">⭐ 最もお得・推奨プラン</div>
+      <div class="pkg-badge">Plan B</div>
+      <div class="pkg-name">AI Business Architect</div>
+      <div class="pkg-tagline">"MBAと開業を両立するための、自動化と仕組み化"</div>
+      <div class="pkg-price-row">
+        <div><span class="pkg-original">通常価格 AUD $7,500</span><span class="discount-badge">▼ 40% OFF</span></div>
+        <div class="pkg-price">$4,500</div>
+        <div class="pkg-price-note">着手金 $2,250 ＋ 納品後 $2,250 ｜ 約6週間</div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="check">✅</span><strong>Plan A の全内容を含む</strong></li>
+        <li><span class="check">🤖</span>Make自動化：ワークショップ予約→確認メール→カレンダー完全自動化</li>
+        <li><span class="check">🎬</span>スタッフ向け英語対応動画SOP 3本（試飲案内/ワークショップ進行/クレーム対応）</li>
+        <li><span class="check">🌐</span>英日バイリンガル接客チートシート（多国籍スタッフが即使えるA4 1枚）</li>
+        <li><span class="check">📈</span>プレオープン〜グランドオープン 集客シナリオ設計（週単位の逆算プラン）</li>
+        <li><span class="check">📊</span>月次KPIダッシュボード設計（客単価・予約率・SNS流入を一元管理）</li>
+      </ul>
+    </div>
+
+    <!-- PLAN C -->
+    <div class="pkg-card plan-c">
+      <div class="pkg-badge">Plan C</div>
+      <div class="pkg-name">Full-Support Partner</div>
+      <div class="pkg-tagline">"クライアントが戦略に集中できる。現場は任せてください。"</div>
+      <div class="pkg-price-row">
+        <div><span class="pkg-original">通常価格 AUD $15,000</span><span class="discount-badge">▼ 50% OFF</span></div>
+        <div class="pkg-price" style="color:var(--gold-light)">$7,500</div>
+        <div class="pkg-price-note">着手金 $3,750 ＋ 段階支払い ｜ 3〜6ヶ月</div>
+      </div>
+      <ul class="pkg-features">
+        <li><span class="check">✅</span><strong>Plan B の全内容を含む</strong></li>
+        <li><span class="check">🏛️</span>内装施工監理（現地立会い3回・建築27年の目）</li>
+        <li><span class="check">📋</span>NSW Building Code・ヘリテージ規制適合確認</li>
+        <li><span class="check">📊</span>英語SNS月次運用改善レポート（開業後3ヶ月間）</li>
+        <li><span class="check">📣</span>ワークショップ集客キャンペーン設計・実施支援</li>
+        <li><span class="check">📞</span>緊急対応ホットライン（営業時間内・3ヶ月間）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">07 / 08</div>
+</section>
+
+<!-- ===== SLIDE 8: PROFILE + CTA ===== -->
+<section class="slide slide-cta" id="s7">
+  <div class="section-num" style="color:var(--matcha-light)">Why Matsumoto</div>
+  <h2 class="section-title" style="color:white;margin-bottom:36px">AI×現場経験が、<span style="color:var(--gold-light)">理想を現実に変える</span></h2>
+
+  <div class="profile-grid">
+    <div class="profile-left">
+      <div class="profile-name">松本 勲</div>
+      <div class="profile-en">Isao Matsumoto ｜ AI Business Consultant</div>
+
+      <div class="profile-stat">
+        <div class="num">27年</div>
+        <div class="detail">
+          <div class="title">建築・塗装の現場経験</div>
+          <div class="sub">施工監理・品質管理・業者折衝のプロ</div>
+        </div>
+      </div>
+      <div class="profile-stat">
+        <div class="num">10年</div>
+        <div class="detail">
+          <div class="title">自営業・経営経験</div>
+          <div class="sub">日豪2拠点での事業運営・P&L管理</div>
+        </div>
+      </div>
+      <div class="profile-stat">
+        <div class="num">AI</div>
+        <div class="detail">
+          <div class="title">マルチAIツール実装力</div>
+          <div class="sub">Claude / Make / Canva / Predis.ai / Perplexity</div>
+        </div>
+      </div>
+
+      <div class="profile-quote">
+        "ブランディング・SNS・BizDevをひとりでこなしながら、
+        MBAと7月開業を同時進行させる——そのキャパシティ限界を、
+        AIと27年の現場経験で突破するのが、私の仕事です。"
+      </div>
+    </div>
+
+    <div class="cta-right">
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--gold-light);margin-bottom:6px">
+        次のステップ
+      </h3>
+      <p style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:22px;">メール1本で始まります。会う必要はありません。</p>
+
+      <div class="cta-step">
+        <div class="cta-step-num">1</div>
+        <div class="cta-step-text">
+          <div class="title">ご返信 → カスタムMood Boardを48時間でお届け</div>
+          <div class="sub" style="line-height:1.6">業者打合せが始まった今こそ動くタイミング。クライアントの物件（7,065mm幅・ヘリテージウォール・既存ティンバー棚）をもとに<strong style="color:rgba(255,255,255,0.8)">Surry Hills専用</strong>のMood Board（コンセプトA・B・C 各2案、照明計画、素材リスト付き）をPDFで特典お届け。次の業者打合せにそのまま持ち込めます。</div>
+        </div>
+      </div>
+
+      <div class="cta-step">
+        <div class="cta-step-num">2</div>
+        <div class="cta-step-text">
+          <div class="title">メールで方向性を確認・プラン選択</div>
+          <div class="sub" style="line-height:1.6">Mood Boardへのご感想をメールでお知らせください。直接お会いする必要はなく、すべて非同期（メール・資料）で対応します。7月グランドオープンの逆算スケジュールで、最適なプランをご提案します。</div>
+        </div>
+      </div>
+
+      <div class="cta-step">
+        <div class="cta-step-num">3</div>
+        <div class="cta-step-text">
+          <div class="title">着手金50%のお支払いで即日スタート</div>
+          <div class="sub" style="line-height:1.6">Plan A ($1,330) / B ($2,250) / C ($3,750) の着手金確認後、即日着手。7月グランドオープンに間に合うよう優先対応します。全納品完了後に残金50%をご請求。</div>
+        </div>
+      </div>
+
+      <div class="cta-email">📧 isao1301111@gmail.com</div>
+      <div class="cta-note">
+        ※ Mood Boardのお届けは完全特典（費用なし）です。<br>
+        ※ ポートフォリオ価格は初回クライアント限定・先着順です。<br>
+        ※ 返信不要・断るのも自由です。まずご覧ください。
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">08 / 08</div>
+</section>
+
+</body>
+</html>

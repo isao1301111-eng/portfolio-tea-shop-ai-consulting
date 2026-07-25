@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="日本食レストラン向けAI自動化の事業設計（提案レベル・実導入なし）。AI電話・在庫予測・決済自動化のアーキテクチャ、価格・ROI設計、Porter/VRIO分析。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Isao Matsumoto — AI Consulting Portfolio">
+<meta property="og:title" content="日本食レストラン向けAI自動化 — 事業設計（提案レベル）">
+<meta property="og:description" content="AI電話・在庫予測・決済自動化のアーキテクチャと価格・ROI設計。※事業設計・実導入なし。数値は業界ベンチマーク。">
+<meta property="og:image" content="https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/ogp-banner.png">
+<meta property="og:url" content="https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/restaurant-ai-design.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/ogp-banner.png">
+<title>日本食レストラン向け AI 自動化（事業設計） | Isao Matsumoto Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap');
+  :root {
+    --matcha:#4a7c59; --matcha-light:#7aab89; --matcha-pale:#e8f0eb;
+    --gold:#c9a84c; --gold-dark:#8b6914; --gold-light:#f0d98c;
+    --ink:#1a1a2e; --ink-mid:#2d2d4e;
+    --warm-white:#faf8f4; --warm-gray:#f0ede6;
+    --text:#2c2c2c; --text-light:#666;
+    --before:#c0392b; --after:#4a7c59;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter','Noto Sans JP',sans-serif;background:var(--warm-white);color:var(--text);line-height:1.75;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* HERO */
+  .hero{background:var(--ink);color:#fff;text-align:center;padding:88px 24px 76px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(74,124,89,0.32) 0%,transparent 60%),radial-gradient(ellipse at 72% 60%,rgba(201,168,76,0.16) 0%,transparent 60%);}
+  .hero>*{position:relative;z-index:1;}
+  .hero-mark{font-size:60px;margin-bottom:16px;}
+  .hero-jp{font-family:'Noto Serif JP',serif;font-size:14px;color:var(--gold);letter-spacing:6px;margin-bottom:14px;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5.5vw,46px);font-weight:700;line-height:1.18;margin-bottom:14px;}
+  .hero-badge{display:inline-block;font-size:13px;font-weight:600;padding:7px 18px;border-radius:999px;background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.3);color:#fff;}
+  .breadcrumb{max-width:1080px;margin:0 auto;padding:16px 24px;font-size:13px;color:var(--text-light);}
+  .breadcrumb a{color:var(--matcha);text-decoration:none;font-weight:600;}
+
+  /* DISCLAIMER */
+  .disclaimer{background:#fbf6e8;border-top:1px solid var(--gold-light);border-bottom:1px solid var(--gold-light);}
+  .disclaimer .wrap{padding:22px 24px;}
+  .disclaimer p{font-size:14px;color:var(--gold-dark);}
+  .disclaimer strong{color:var(--ink);}
+
+  section{padding:64px 0;}
+  section.alt{background:var(--warm-gray);}
+  .section-num{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--matcha);margin-bottom:8px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,34px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:12px;}
+  .section-title span{color:var(--matcha);}
+  .section-lead{font-size:15px;color:var(--text-light);max-width:760px;margin-bottom:36px;}
+
+  /* PROBLEM */
+  .prob-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .prob-card{background:#fff;border:1px solid var(--warm-gray);border-radius:16px;padding:28px 26px;box-shadow:0 6px 20px rgba(26,26,46,0.05);}
+  .prob-card h3{font-family:'Noto Serif JP',serif;font-size:18px;color:var(--ink);margin-bottom:10px;}
+  .prob-card p{font-size:14px;color:var(--text-light);}
+
+  /* SOLUTION pillars with before/after */
+  .sol{background:#fff;border:1px solid var(--warm-gray);border-radius:18px;overflow:hidden;margin-bottom:24px;box-shadow:0 8px 24px rgba(26,26,46,0.05);}
+  .sol-head{padding:22px 28px;background:linear-gradient(135deg,var(--matcha) 0%,var(--matcha-light) 100%);color:#fff;}
+  .sol-head h3{font-family:'Playfair Display',serif;font-size:20px;}
+  .sol-head span{font-size:13px;opacity:.9;}
+  .ba{display:grid;grid-template-columns:1fr 1fr;}
+  .ba>div{padding:22px 26px;}
+  .ba .before{background:#fdf1f0;border-right:1px solid var(--warm-gray);}
+  .ba .after{background:var(--matcha-pale);}
+  .ba h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+  .ba .before h4{color:var(--before);}
+  .ba .after h4{color:var(--after);}
+  .ba ul{list-style:none;}
+  .ba li{font-size:14px;padding-left:18px;position:relative;margin-bottom:6px;}
+  .ba li::before{content:'—';position:absolute;left:0;opacity:.5;}
+
+  /* TABLE */
+  .tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(26,26,46,0.05);font-size:14px;}
+  .tbl th,.tbl td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--warm-gray);}
+  .tbl th{background:var(--ink);color:#fff;font-weight:600;}
+  .tbl tr:last-child td{border-bottom:none;}
+  .tbl td.hi{color:var(--matcha);font-weight:600;}
+  .scroll{overflow-x:auto;}
+
+  /* ARCH diagram */
+  .arch{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .arch-col{background:#fff;border:1px solid var(--warm-gray);border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(26,26,46,0.05);}
+  .arch-col h4{background:var(--ink);color:#fff;font-size:14px;padding:14px 18px;text-align:center;}
+  .arch-col.gold h4{background:linear-gradient(135deg,var(--gold-dark),var(--gold));}
+  .arch-col.matcha h4{background:linear-gradient(135deg,var(--matcha),var(--matcha-light));}
+  .arch-col ul{list-style:none;padding:18px 20px;}
+  .arch-col li{font-size:13px;padding:8px 0 8px 20px;position:relative;border-bottom:1px dashed var(--warm-gray);}
+  .arch-col li:last-child{border-bottom:none;}
+  .arch-col li::before{content:'▸';position:absolute;left:0;color:var(--matcha);}
+
+  /* FLOW */
+  .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;}
+  .flow-step{flex:1;min-width:150px;background:#fff;border:1px solid var(--warm-gray);border-radius:12px;padding:16px 18px;font-size:13px;position:relative;}
+  .flow-step b{display:block;color:var(--ink);margin-bottom:4px;font-size:14px;}
+  .flow-step.stop{background:#fdf1f0;border-color:#e0b0b0;}
+  .flow-step.ok{background:var(--matcha-pale);}
+
+  /* PORTER / VRIO */
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .force{background:#fff;border:1px solid var(--warm-gray);border-radius:12px;padding:18px 20px;}
+  .force .lvl{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;display:inline-block;margin-bottom:8px;}
+  .lvl.low{background:var(--matcha-pale);color:var(--matcha);}
+  .lvl.mid{background:#fbf6e8;color:var(--gold-dark);}
+  .force h4{font-size:15px;color:var(--ink);margin-bottom:6px;}
+  .force p{font-size:13px;color:var(--text-light);}
+
+  .cta{text-align:center;padding:56px 24px;}
+  .btn{display:inline-block;text-decoration:none;font-weight:600;font-size:14px;padding:13px 26px;border-radius:999px;background:var(--ink);color:#fff;transition:transform .15s,box-shadow .15s;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(26,26,46,0.2);}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+
+  footer{background:var(--ink);color:rgba(255,255,255,0.85);padding:52px 24px;text-align:center;}
+  footer .name{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:8px;}
+  footer .role{font-size:14px;color:var(--gold-light);margin-bottom:16px;}
+  footer a{color:var(--matcha-light);text-decoration:none;}
+  footer .links{font-size:14px;line-height:2;}
+
+  @media (max-width:760px){
+    .prob-grid,.arch,.grid2,.ba{grid-template-columns:1fr;}
+    .ba .before{border-right:none;border-bottom:1px solid var(--warm-gray);}
+    section{padding:52px 0;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-mark">🍣</div>
+    <div class="hero-jp">シドニー 日本食レストラン向け AI 自動化</div>
+    <h1 class="hero-title">Restaurant AI Automation<br>— 事業設計 —</h1>
+    <span class="hero-badge">Case B ／ 事業設計・提案レベル（実導入なし）</span>
+  </header>
+
+  <nav class="breadcrumb"><a href="hospitality-ai-consulting.html">← Hospitality AI Consulting（概要）</a> ／ 事例B：日本食レストラン</nav>
+
+  <div class="disclaimer">
+    <div class="wrap">
+      <p>⚠️ <strong>本ページは「事業設計・提案レベル」の資料です。</strong>実クライアントへの導入・運用実績ではありません。以下に記載する削減率・ROI・金額は、<strong>公開されている業界事例（ベンチマーク）に基づく想定値</strong>であり、当方が達成した数値ではありません。※実クライアント案件は「事例A：日本茶専門店」を参照。</p>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="wrap">
+      <div class="section-num">Problem</div>
+      <h2 class="section-title">ジャパレスが抱える<span>2大課題</span></h2>
+      <p class="section-lead">シドニーの家族経営・中小の日本食レストラン（20〜50席規模）に共通する、利益を圧迫する2つの構造的課題。</p>
+      <div class="prob-grid">
+        <div class="prob-card">
+          <h3>① 人手不足・労働コスト高騰</h3>
+          <p>ピーク時の電話対応で予約を取りこぼす。人件費が高く、離職・採用コストも重い。<br><small>※業界ベンチマーク：豪州最低賃金 約$24.10/時（2026）、ピーク時の電話取りこぼし 約30%。</small></p>
+        </div>
+        <div class="prob-card">
+          <h3>② 生鮮食材の廃棄ロス</h3>
+          <p>鮮魚など高単価食材を勘と経験で発注→過不足が頻発し、廃棄が利益を削る。<br><small>※業界ベンチマーク：鮮魚廃棄 月 約$2,000〜$5,000相当。</small></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-num">Solution Design</div>
+      <h2 class="section-title">ソリューション設計 <span>2本柱</span></h2>
+      <p class="section-lead">課題（ジョブ）から逆算した、導入設計。既存SaaSを現場に合わせて構成・設定する前提。</p>
+
+      <div class="sol">
+        <div class="sol-head"><h3>柱1：AI電話アシスタント</h3><span>Hostie / Loman AI（設計）</span></div>
+        <div class="ba">
+          <div class="before"><h4>Before</h4><ul><li>スタッフが電話対応→ピーク時に取りこぼし</li><li>予約・注文・FAQに人手を取られる</li></ul></div>
+          <div class="after"><h4>After（想定効果・業界事例）</h4><ul><li>24/7 AI自動対応で取りこぼしを抑制</li><li>スタッフを接客・調理に集中</li><li>労働コスト 約24%削減（業界事例）</li></ul></div>
+        </div>
+      </div>
+
+      <div class="sol">
+        <div class="sol-head"><h3>柱2：AI在庫・需要予測</h3><span>Restoke.ai（設計）</span></div>
+        <div class="ba">
+          <div class="before"><h4>Before</h4><ul><li>発注はオーナーの勘・経験に依存</li><li>過剰在庫 or 食材不足が頻発</li></ul></div>
+          <div class="after"><h4>After（想定効果・業界事例）</h4><ul><li>過去データ・天気・イベントで需要予測</li><li>廃棄 15〜30%削減／食品原価 約10%改善</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING & ROI -->
+  <section>
+    <div class="wrap">
+      <div class="section-num">Pricing &amp; ROI</div>
+      <h2 class="section-title">バリューベース<span>価格設計</span></h2>
+      <p class="section-lead">コストではなく「顧客が得る価値（節約額）」を基準に価格を設定する考え方。数値は業界ベンチマークに基づく<strong>想定</strong>。</p>
+      <div class="scroll">
+        <table class="tbl">
+          <tr><th>項目</th><th>想定レンジ（月・業界事例ベース）</th></tr>
+          <tr><td>AI電話：労働コスト削減</td><td>$1,000〜$2,000</td></tr>
+          <tr><td>AI在庫：廃棄削減</td><td>$600〜$1,500</td></tr>
+          <tr><td class="hi">クライアント節約効果 合計</td><td class="hi">$1,600〜$3,500 / 月</td></tr>
+          <tr><td>コンサル月額（設計）</td><td>$499〜$799 / 月</td></tr>
+          <tr><td class="hi">想定 ROI 回収期間</td><td class="hi">1〜3ヶ月</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-num">Architecture</div>
+      <h2 class="section-title">システム<span>アーキテクチャ</span>（設計）</h2>
+      <p class="section-lead">顧客接点・バックオフィス・財務請求の3レイヤーで構成。<strong>財務・請求レイヤーの決済自動化は実装済み</strong>（Node.js / Stripe Webhook / Railway）。</p>
+      <div class="arch">
+        <div class="arch-col matcha">
+          <h4>顧客接点</h4>
+          <ul><li>AI電話（Hostie/Loman）</li><li>24/7 予約対応</li><li>注文処理・FAQ自動回答</li><li>既存POSと連携</li></ul>
+        </div>
+        <div class="arch-col">
+          <h4>バックオフィス</h4>
+          <ul><li>在庫管理AI（Restoke.ai）</li><li>需要予測・発注最適化</li><li>レポート生成</li><li>分析ダッシュボード</li></ul>
+        </div>
+        <div class="arch-col gold">
+          <h4>財務・請求 <small>（実装済み）</small></h4>
+          <ul><li>Stripe Billing（Fortnight自動請求）</li><li>未払い自動停止（自作Webhook）</li><li>Wise AUD受取 → JPY変換</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT FLOW -->
+  <section>
+    <div class="wrap">
+      <div class="section-num">Payment Automation（実装済み）</div>
+      <h2 class="section-title">決済自動化<span>フロー</span></h2>
+      <p class="section-lead">サブスク型AIサービスを回すための「継続課金＋未払い自動対応」。ここは設計ではなく<strong>Node.js / Express で実装・Railwayにデプロイ済み</strong>（repo: stripe-webhook）。</p>
+      <div class="flow">
+        <div class="flow-step"><b>① 登録</b>顧客がStripeに支払い方法を登録</div>
+        <div class="flow-step"><b>② 自動請求</b>毎Fortnightで自動引き落とし</div>
+        <div class="flow-step stop"><b>③ 失敗時</b>Smart Retry→日本語督促メール（SendGrid）</div>
+        <div class="flow-step stop"><b>④ 7日未払い</b>サービス自動停止（APIキー無効化）</div>
+        <div class="flow-step ok"><b>⑤ 支払い完了</b>サービス自動再開</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTER -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-num">Competitive Analysis</div>
+      <h2 class="section-title">競合分析（<span>Porter's Five Forces</span>）</h2>
+      <p class="section-lead">シドニーの「ジャパレス特化AIコンサル」という市場ポジションの分析。</p>
+      <div class="grid2">
+        <div class="force"><span class="lvl low">脅威：低</span><h4>新規参入</h4><p>ジャパレス特化のAI知識×日本語×現場経験の組み合わせは模倣困難。</p></div>
+        <div class="force"><span class="lvl mid">脅威：中</span><h4>代替品</h4><p>一般SaaS（Restoke単体等）は代替になりうるが、導入支援・日本語サポートは代替不可。</p></div>
+        <div class="force"><span class="lvl low">交渉力：低〜中</span><h4>買い手</h4><p>家族経営はITリテラシー低め→「全部お任せ」コンサルへの依存度が高い。</p></div>
+        <div class="force"><span class="lvl mid">交渉力：中</span><h4>供給者</h4><p>Restoke/Hostieへの依存→複数SaaSパートナーで分散。</p></div>
+        <div class="force"><span class="lvl low">競合：極低</span><h4>業界内競合</h4><p>Sydneyでジャパレス特化AIコンサルは実質ゼロ（ブルーオーシャン／公開情報に基づく推定）。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VRIO -->
+  <section>
+    <div class="wrap">
+      <div class="section-num">VRIO Analysis</div>
+      <h2 class="section-title">なぜ<span>模倣困難</span>か</h2>
+      <div class="scroll">
+        <table class="tbl">
+          <tr><th>観点</th><th>評価</th><th>根拠</th></tr>
+          <tr><td>Value（価値）</td><td class="hi">高</td><td>取りこぼし・廃棄という利益直結の課題を解く</td></tr>
+          <tr><td>Rarity（希少性）</td><td class="hi">高</td><td>建築塗装27年×AI×日英バイリンガルの組み合わせ</td></tr>
+          <tr><td>Inimitability（模倣困難性）</td><td class="hi">高</td><td>現場感覚＋日本語対応＋AI実装の三位一体は再現しにくい</td></tr>
+          <tr><td>Organization（組織）</td><td>要強化</td><td>単独事業では活かしにくく、他プロダクトと束ねて武器化</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <a class="btn ghost" href="hospitality-ai-consulting.html">← 概要（方法論＋2事例）へ戻る</a>
+    &nbsp;
+    <a class="btn" href="index.html">実クライアント事例（日本茶専門店）を見る →</a>
+  </div>
+
+  <footer>
+    <div class="name">松本 勲 — Isao Matsumoto</div>
+    <div class="role">AI Business Consultant / AI Automation Developer</div>
+    <div class="links">
+      建築塗装27年（日豪で自営業 通算約10年）× AI ／ 2026年9月21日 関東へ帰国予定<br>
+      <a href="mailto:isao1301111@gmail.com">isao1301111@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://linkedin.com/in/isao-matsumoto-1b271411b" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+      <a href="https://github.com/isao1301111-eng" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

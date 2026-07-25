@@ -5,6 +5,9 @@
 ![Case Study バナー](ogp-banner.png)
 
 [![View Case Study](https://img.shields.io/badge/%F0%9F%93%84_View_Case_Study-Open-C9A84C)](https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/)
+[![Hospitality AI Consulting](https://img.shields.io/badge/%F0%9F%8F%AE_Hospitality_AI_Consulting-Overview-4A7C59)](https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/hospitality-ai-consulting.html)
+
+> 🏮 **上位ページ（飲食業向けAIコンサル 概要）**: [hospitality-ai-consulting.html](https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/hospitality-ai-consulting.html) — 日本茶専門店（実クライアント）＋日本食レストラン（事業設計）の2事例を方法論として提示。本ケーススタディ（お茶屋）はその「事例A」の詳細版です。
 
 ---
 
@@ -41,7 +44,7 @@ An AI business consulting case study for a long-established Japanese tea house p
 ## 👤 作者 / Author
 
 **松本 勲（Isao Matsumoto）** — AI Business Consultant / AI Automation Developer
-建築塗装27年（日豪で自営業 通算10年）× AI。2026年10月 関東へ帰国予定。
+建築塗装27年（日豪で自営業 通算約10年）× AI。2026年9月21日 関東へ帰国予定。
 
 - Email: isao1301111@gmail.com
 - LinkedIn: [linkedin.com/in/isao-matsumoto-1b271411b](https://linkedin.com/in/isao-matsumoto-1b271411b)

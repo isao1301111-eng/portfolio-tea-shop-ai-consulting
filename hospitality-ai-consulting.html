@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="シドニーの飲食・ホスピタリティ事業向けAI導入コンサル。現場理解×日英バイリンガル×AI設計。日本茶専門店(実クライアント)と日本食レストラン(事業設計)の2事例。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Isao Matsumoto — AI Consulting Portfolio">
+<meta property="og:title" content="Sydney Hospitality AI Consulting — Isao Matsumoto">
+<meta property="og:description" content="飲食・ホスピタリティ事業のためのAI導入設計。現場理解×日英×AI。日本茶専門店(実クライアント)＋日本食レストラン(事業設計)の2事例。">
+<meta property="og:image" content="https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/ogp-banner.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:url" content="https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/hospitality-ai-consulting.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sydney Hospitality AI Consulting — Isao Matsumoto">
+<meta name="twitter:description" content="飲食・ホスピタリティ事業のためのAI導入設計。2事例で方法論を提示。">
+<meta name="twitter:image" content="https://isao1301111-eng.github.io/portfolio-tea-shop-ai-consulting/ogp-banner.png">
+<title>Sydney Hospitality AI Consulting | Isao Matsumoto Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Playfair+Display:wght@700&family=Inter:wght@400;600&family=Noto+Sans+JP:wght@400;600&display=swap');
+
+  :root {
+    --matcha: #4a7c59;
+    --matcha-light: #7aab89;
+    --matcha-pale: #e8f0eb;
+    --gold: #c9a84c;
+    --gold-dark: #8b6914;
+    --gold-light: #f0d98c;
+    --ink: #1a1a2e;
+    --ink-mid: #2d2d4e;
+    --warm-white: #faf8f4;
+    --warm-gray: #f0ede6;
+    --text: #2c2c2c;
+    --text-light: #666;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    line-height: 1.75;
+  }
+  a { color: inherit; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+    padding: 96px 24px 88px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 40%, rgba(74,124,89,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse at 72% 60%, rgba(201,168,76,0.18) 0%, transparent 60%);
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .hero-mark { font-size: 64px; margin-bottom: 18px; }
+  .hero-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px; color: var(--gold);
+    letter-spacing: 6px; margin-bottom: 14px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 52px); font-weight: 700; line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 2.5vw, 19px); color: var(--matcha-light);
+    font-style: italic; margin-bottom: 34px;
+  }
+  .hero-divider { width: 80px; height: 2px; background: var(--gold); margin: 0 auto 30px; }
+  .hero-meta {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    letter-spacing: 2px; line-height: 2;
+  }
+  .hero-meta span { color: var(--gold-light); font-weight: 600; }
+
+  /* SECTIONS */
+  section { padding: 72px 0; }
+  section.alt { background: var(--warm-gray); }
+  .section-num {
+    font-size: 11px; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--matcha); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 38px); font-weight: 700; color: var(--ink);
+    line-height: 1.2; margin-bottom: 12px;
+  }
+  .section-title span { color: var(--matcha); }
+  .section-lead { font-size: 15px; color: var(--text-light); max-width: 720px; margin-bottom: 40px; }
+
+  /* APPROACH */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .pillar {
+    background: #fff; border: 1px solid var(--warm-gray);
+    border-radius: 16px; padding: 28px 24px;
+    box-shadow: 0 6px 20px rgba(26,26,46,0.05);
+  }
+  .pillar-ico { font-size: 30px; margin-bottom: 12px; }
+  .pillar h3 {
+    font-family: 'Noto Serif JP', serif; font-size: 18px;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .pillar p { font-size: 14px; color: var(--text-light); }
+
+  /* CASES */
+  .case {
+    background: #fff; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--warm-gray);
+    box-shadow: 0 10px 30px rgba(26,26,46,0.06);
+    margin-bottom: 32px;
+  }
+  .case-head { padding: 28px 32px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; border-bottom: 1px solid var(--warm-gray); }
+  .case-head.real { background: linear-gradient(135deg, var(--matcha) 0%, var(--matcha-light) 100%); color: #fff; }
+  .case-head.design { background: linear-gradient(135deg, var(--ink) 0%, var(--ink-mid) 100%); color: #fff; }
+  .case-kicker { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.85; width: 100%; }
+  .case-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
+  .badge {
+    font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+    background: rgba(255,255,255,0.22); color: #fff; white-space: nowrap;
+  }
+  .badge.gold { background: var(--gold); color: var(--ink); }
+  .case-body { padding: 28px 32px; }
+  .case-body ul { list-style: none; margin: 0 0 18px; }
+  .case-body li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; }
+  .case-body li::before { content: '▪'; position: absolute; left: 4px; color: var(--matcha); }
+  .tech { font-size: 13px; color: var(--text-light); margin-bottom: 18px; }
+  .note {
+    font-size: 13px; color: var(--gold-dark); background: #fbf6e8;
+    border-left: 3px solid var(--gold); padding: 12px 16px; border-radius: 8px; margin-bottom: 18px;
+  }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 600; font-size: 14px;
+    padding: 12px 24px; border-radius: 999px; background: var(--ink); color: #fff;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(26,26,46,0.2); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+
+  /* RELATED */
+  .related { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .rel-card {
+    display: block; text-decoration: none; background: #fff; border: 1px solid var(--warm-gray);
+    border-radius: 14px; padding: 22px 24px; transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .rel-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(26,26,46,0.08); }
+  .rel-card h3 { font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+  .rel-card p { font-size: 13px; color: var(--text-light); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(255,255,255,0.85); padding: 56px 24px; text-align: center; }
+  footer .name { font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; margin-bottom: 8px; }
+  footer .role { font-size: 14px; color: var(--gold-light); margin-bottom: 18px; }
+  footer a { color: var(--matcha-light); text-decoration: none; }
+  footer .links { font-size: 14px; line-height: 2; }
+
+  @media (max-width: 760px) {
+    .pillars { grid-template-columns: 1fr; }
+    .related { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-mark">🏮</div>
+    <div class="hero-jp">シドニー 飲食・ホスピタリティ AI コンサル</div>
+    <h1 class="hero-title">Sydney Hospitality<br>AI Consulting</h1>
+    <p class="hero-sub">飲食事業の「ジョブ」を、現場理解 × AI で片づける。</p>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      AI × 建築塗装 <span>27年</span> の現場経験 &nbsp;|&nbsp; 日英バイリンガル &nbsp;|&nbsp; Sydney → Japan <span>2026.9</span>
+    </div>
+  </header>
+
+  <!-- APPROACH -->
+  <section>
+    <div class="wrap">
+      <div class="section-num">Approach</div>
+      <h2 class="section-title">業種の<span>「ジョブ」</span>起点でAIを設計する</h2>
+      <p class="section-lead">
+        顧客は「AIツール」が欲しいのではなく、集客・省人化・廃棄削減という<strong>片づけたい仕事（Jobs To Be Done）</strong>を抱えている。
+        図面が読め、施工条件や現場の段取りを理解したうえで、AIで市場・デザイン・オペレーションを高速に設計する——現場を知るコンサルタントの提案です。
+      </p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-ico">🏗️</div>
+          <h3>現場・業種の理解</h3>
+          <p>建築塗装27年＋自営経営。図面・動線・規制（NSW Heritage/耐火など）と、飲食現場の実務を踏まえた設計。</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-ico">🤖</div>
+          <h3>AIで設計・自動化</h3>
+          <p>内装コンセプト生成、SNS運用、動画SOP、AI電話・在庫予測、決済自動化までを目的から逆算して構成。</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-ico">🌏</div>
+          <h3>日英バイリンガル</h3>
+          <p>日本人オーナーとの深い意思疎通と、豪州現地の商習慣・規制の橋渡しを同時に担える。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-num">Case Studies</div>
+      <h2 class="section-title">2つの事例で示す<span>方法論</span></h2>
+      <p class="section-lead">実クライアント案件と、事業設計（提案）レベルの案件を、<strong>格を明確に分けて</strong>提示します。</p>
+
+      <!-- CASE A -->
+      <div class="case">
+        <div class="case-head real">
+          <div class="case-kicker">Case A ／ 実クライアント案件</div>
+          <div class="case-title">日本茶専門店（Surry Hills）出店支援</div>
+          <span class="badge gold">実案件</span>
+        </div>
+        <div class="case-body">
+          <ul>
+            <li>内装コンセプト3案（AI画像生成・Mood Board）＋確定フロアプランに基づくゾーニング設計</li>
+            <li>シドニー日本茶市場の分析・競合（抹茶カフェ）との差別化・立地インテリジェンス</li>
+            <li>SNS運用カレンダー・スタッフ用動画SOP・Make自動化フローの提案</li>
+            <li>NSW Heritage規制・FRL耐火壁など現場条件を反映した実行計画（全8ページ提案書）</li>
+          </ul>
+          <p class="tech">活用技術: Canva ／ Claude ／ Predis.ai ／ Make ／ Google ImageFX ／ Perplexity</p>
+          <a class="btn" href="index.html">詳細なケーススタディを見る →</a>
+        </div>
+      </div>
+
+      <!-- CASE B -->
+      <div class="case">
+        <div class="case-head design">
+          <div class="case-kicker">Case B ／ 事業設計・提案レベル</div>
+          <div class="case-title">日本食レストラン向け AI 自動化</div>
+          <span class="badge">事業設計（実導入なし）</span>
+        </div>
+        <div class="case-body">
+          <ul>
+            <li>AI電話アシスタント（予約・注文・FAQの24/7自動対応）の導入設計</li>
+            <li>AI在庫・需要予測による生鮮食材の発注最適化・廃棄削減の設計</li>
+            <li>価格モデル・ROI試算・競合分析（Porter's Five Forces / VRIO）の策定</li>
+            <li>サブスク課金＋未払い自動対応の決済自動化基盤（Stripe×Wise×Webhook）を実装</li>
+          </ul>
+          <p class="note">⚠️ 本事例は事業設計・提案レベルであり、実導入・実クライアントの成果ではありません。記載しうる削減率・ROI数値は<strong>業界ベンチマーク（出典：業界事例）</strong>に基づく想定値です。</p>
+          <p class="tech">活用技術: Stripe Billing ／ Wise Business ／ Node.js ／ Restoke.ai ／ Hostie・Loman（設計）</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <section>
+    <div class="wrap">
+      <div class="section-num">More Work</div>
+      <h2 class="section-title">関連プロジェクト</h2>
+      <p class="section-lead">現場で動く、実装済みのプロダクト。</p>
+      <div class="related">
+        <a class="rel-card" href="https://isao1301111-eng.github.io/genba-nippo-tool/" target="_blank" rel="noopener">
+          <h3>打ち込みゼロ日報 →</h3>
+          <p>タップ＋音声だけの現場日報アプリ。出来高進捗・人工自動計算・クロス端末クラウド同期。</p>
+        </a>
+        <a class="rel-card" href="https://github.com/isao1301111-eng/samurai-painting-quote" target="_blank" rel="noopener">
+          <h3>Samurai Painting Quote v6 →</h3>
+          <p>自然言語入力→AI構造化→検証エンジンの見積AI。ハルシネーション防止設計。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="name">松本 勲 — Isao Matsumoto</div>
+    <div class="role">AI Business Consultant / AI Automation Developer</div>
+    <div class="links">
+      建築塗装27年（日豪で自営業 通算約10年）× AI ／ 2026年9月 関東へ帰国予定<br>
+      <a href="mailto:isao1301111@gmail.com">isao1301111@gmail.com</a> &nbsp;|&nbsp;
+      <a href="https://linkedin.com/in/isao-matsumoto-1b271411b" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
+      <a href="https://github.com/isao1301111-eng" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</body>
+</html>

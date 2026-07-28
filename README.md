@@ -43,7 +43,7 @@ An AI business consulting case study for a long-established Japanese tea house p
 
 ## 👤 作者 / Author
 
-**松本 勲（Isao Matsumoto）** — AI Business Consultant / AI Automation Developer
+**松本 勲（Isao Matsumoto）** — AI Automation Developer
 建築塗装27年（日豪で自営業 通算約10年）× AI。2026年9月21日 関東へ帰国予定。
 
 - Email: isao1301111@gmail.com
